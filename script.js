@@ -74,6 +74,7 @@ function playGame() {
         alert(`After ${numRounds} rounds, you tied!`);
     } else {
         alert(`After ${numRounds} rounds, you lost.`);
-    }
-    
+    }    
 }
+
+playGame();
