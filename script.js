@@ -14,7 +14,8 @@ function playRound(playerSelection, computerSelection) {
     let playerIndex = choiceArray.indexOf(playerSelection);
     // If index is -1, did not find player's choice so cannot play
     if (playerIndex === -1) {
-        return `Not a valid choice, please try again`;
+        alert(`Not a valid choice, you lose`);
+        return -1;
     }
     // Get index of choice computer entered
     let computerIndex = choiceArray.indexOf(computerSelection);
