@@ -24,16 +24,16 @@ function playRound(playerSelection, computerSelection) {
     if (playerIndex === computerIndex) {
         return `Both players chose ${playerSelection}. Tie!`;
     } // If player picks first item in array and computer picks last item in array, player wins
-    else if (playerIndex === 0 && computerIndex === choiceArray.length) {
-        return `${playerSelection} beats ${computerSelection}. You win!`;
+    else if (playerIndex === 0 && computerIndex === choiceArray.length - 1) {
+        return `${playerSelection[0].toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}. You win!`;
     } // If it's reversed from previous case, computer wins
-    else if (playerIndex === choiceArray.length && computerIndex === 0) {
-        return `${computerSelection} beats ${playerSelection}. Sorry, you lose.`;
+    else if (playerIndex === choiceArray.length - 1 && computerIndex === 0) {
+        return `${computerSelection[0].toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}. Sorry, you lose.`;
     } // If player's index is bigger than computer's index, player wins
     else if (playerIndex > computerIndex) {
-        return `${playerSelection} beats ${computerSelection}. You win!`;
+        return `${playerSelection[0].toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}. You win!`;
     } // Otherwise, computer wins
     else {
-        return `${computerSelection} beats ${playerSelection}. Sorry, you lose.`;
+        return `${computerSelection[0].toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}. Sorry, you lose.`;
     }
 }
