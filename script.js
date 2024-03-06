@@ -44,22 +44,35 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function playGame() {
+    // Initialize player's score, player's selection, computer's selection, and number of rounds
     let playerScore = 0;
     let playerSelection;
     let computerSelection;
     const numRounds = 5;
+
+    // Play game
     for (let i = 0; i < numRounds; i++) {
+        // Ask player what they choose and make it lowercase
         playerSelection = prompt("What do you pick?", "").toLowerCase();
+        // Get what computer chooses
         computerSelection = getComputerChoice();
+        // Play round and get score
+        // If player won, score increases by 1
+        // If player ties, score does not change
+        // If player loses, score decreases by 1
         playerScore += playRound(playerSelection, computerSelection);
     }
 
+    // Evaluate player's score after game finishes
+    // If positive, player wins
+    // If zero, player ties
+    // If negative, player loses
     if (playerScore > 0) {
         alert(`After ${numRounds} rounds, you won!`);
-    } else if (playerScore < 0) {
-        alert(`After ${numRounds} rounds, you lost.`);
-    } else {
+    } else if (playerScore === 0) {
         alert(`After ${numRounds} rounds, you tied!`);
+    } else {
+        alert(`After ${numRounds} rounds, you lost.`);
     }
     
 }
