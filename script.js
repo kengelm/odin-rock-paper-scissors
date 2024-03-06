@@ -44,6 +44,16 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+function declareWinner(playerScore) {
+    if (playerScore > 0) {
+        alert(`After ${numRounds} rounds, you won!`);
+    } else if (playerScore === 0) {
+        alert(`After ${numRounds} rounds, you tied!`);
+    } else {
+        alert(`After ${numRounds} rounds, you lost.`);
+    } 
+}
+
 function playGame() {
     // Initialize player's score, player's selection, computer's selection, and number of rounds
     let playerScore = 0;
@@ -58,23 +68,11 @@ function playGame() {
         // Get what computer chooses
         computerSelection = getComputerChoice();
         // Play round and get score
-        // If player won, score increases by 1
-        // If player ties, score does not change
-        // If player loses, score decreases by 1
         playerScore += playRound(playerSelection, computerSelection);
     }
 
-    // Evaluate player's score after game finishes
-    // If positive, player wins
-    // If zero, player ties
-    // If negative, player loses
-    if (playerScore > 0) {
-        alert(`After ${numRounds} rounds, you won!`);
-    } else if (playerScore === 0) {
-        alert(`After ${numRounds} rounds, you tied!`);
-    } else {
-        alert(`After ${numRounds} rounds, you lost.`);
-    }    
+    declareWinner(playerScore);
+   
 }
 
 playGame();
