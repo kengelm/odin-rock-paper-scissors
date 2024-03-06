@@ -22,18 +22,44 @@ function playRound(playerSelection, computerSelection) {
     // Compare index values
     // If both players pick same option, then tie
     if (playerIndex === computerIndex) {
-        return `Both players chose ${playerSelection}. Tie!`;
+        alert(`Both players chose ${playerSelection}. Tie!`);
+        return 0;
     } // If player picks first item in array and computer picks last item in array, player wins
     else if (playerIndex === 0 && computerIndex === choiceArray.length - 1) {
-        return `${playerSelection[0].toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}. You win!`;
+        alert(`${playerSelection[0].toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}. You win!`);
+        return 1;
     } // If it's reversed from previous case, computer wins
     else if (playerIndex === choiceArray.length - 1 && computerIndex === 0) {
-        return `${computerSelection[0].toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}. Sorry, you lose.`;
+        alert(`${computerSelection[0].toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}. Sorry, you lose.`);
+        return -1;
     } // If player's index is bigger than computer's index, player wins
     else if (playerIndex > computerIndex) {
-        return `${playerSelection[0].toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}. You win!`;
+        alert(`${playerSelection[0].toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}. You win!`);
+        return 1;
     } // Otherwise, computer wins
     else {
-        return `${computerSelection[0].toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}. Sorry, you lose.`;
+        alert(`${computerSelection[0].toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}. Sorry, you lose.`);
+        return -1;
     }
+}
+
+function playGame() {
+    let playerScore = 0;
+    let playerSelection;
+    let computerSelection;
+    const numRounds = 5;
+    for (let i = 0; i < numRounds; i++) {
+        playerSelection = prompt("What do you pick?", "").toLowerCase();
+        computerSelection = getComputerChoice();
+        playerScore += playRound(playerSelection, computerSelection);
+    }
+
+    if (playerScore > 0) {
+        alert(`After ${numRounds} rounds, you won!`);
+    } else if (playerScore < 0) {
+        alert(`After ${numRounds} rounds, you lost.`);
+    } else {
+        alert(`After ${numRounds} rounds, you tied!`);
+    }
+    
 }
